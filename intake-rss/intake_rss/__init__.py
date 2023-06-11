@@ -22,7 +22,7 @@ def main():
         stderr("Failed to parse feed", feed_url)
         return 1
 
-    feed_title = feed.feed.get("title") or os.environ.get("FEED_TITLE")
+    feed_title = os.environ.get("FEED_TITLE") or feed.feed.get("title")
 
     for entry in feed.entries:
         item = {}
