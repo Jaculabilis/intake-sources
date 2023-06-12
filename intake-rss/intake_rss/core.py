@@ -47,7 +47,3 @@ def main():
             item["link"] = entry_link
 
         print(json.dumps(item))
-
-
-if __name__ == "__main__":
-    sys.exit(main())

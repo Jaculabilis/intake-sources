@@ -3,7 +3,7 @@ name = "intake-rss"
 version = "0.1.0"
 
 [project.scripts]
-intake-rss = "intake_rss:main"
+intake-rss = "intake_rss.core:main"
 
 [tool.setuptools]
 packages = ["intake_rss"]
