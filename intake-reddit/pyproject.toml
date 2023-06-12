@@ -1,0 +1,10 @@
+[project]
+name = "intake-reddit"
+version = "0.1.0"
+
+[project.scripts]
+intake-reddit = "intake_reddit.core:main"
+
+[tool.setuptools]
+packages = ["intake_reddit"]
+

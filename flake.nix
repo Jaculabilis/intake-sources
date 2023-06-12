@@ -15,6 +15,12 @@
         format = "pyproject";
         propagatedBuildInputs = with pkgs.python38Packages; [ feedparser setuptools ];
       };
+      intake-reddit = pkgs.python38Packages.buildPythonPackage {
+        name = "intake-reddit";
+        src = builtins.path { path = ./intake-reddit; name = "intake-reddit"; };
+        format = "pyproject";
+        propagatedBuildInputs = with pkgs.python38Packages; [ setuptools ];
+      };
     };
 
     devShells.${system} = {
