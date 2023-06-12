@@ -7,29 +7,26 @@
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    pypkgs = pkgs.python38Packages;
+    pythonPackage = name: path: deps: pypkgs.buildPythonPackage {
+      inherit name;
+      src = builtins.path { inherit name path; };
+      format = "pyproject";
+      propagatedBuildInputs = [ pypkgs.setuptools ] ++ deps;
+    };
   in {
     packages.${system} = {
-      intake-rss = pkgs.python38Packages.buildPythonPackage {
-        name = "intake-rss";
-        src = builtins.path { path = ./intake-rss; name = "intake-rss"; };
-        format = "pyproject";
-        propagatedBuildInputs = with pkgs.python38Packages; [ feedparser setuptools ];
-      };
-      intake-reddit = pkgs.python38Packages.buildPythonPackage {
-        name = "intake-reddit";
-        src = builtins.path { path = ./intake-reddit; name = "intake-reddit"; };
-        format = "pyproject";
-        propagatedBuildInputs = with pkgs.python38Packages; [ setuptools ];
-      };
+      intake-rss = pythonPackage "intake-rss" ./intake-rss [ pypkgs.feedparser ];
+      intake-reddit = pythonPackage "intake-reddit" ./intake-reddit [];
     };
 
     devShells.${system} = {
-      intake-rss = let
+      python = let
         pythonEnv = pkgs.python38.withPackages (pypkgs: with pypkgs; [ black feedparser ]);
       in pkgs.mkShell {
         packages = [ pythonEnv ];
         shellHook = ''
-          PS1="(intake-rss) $PS1"
+          PS1="(python) $PS1"
         '';
       };
     };
