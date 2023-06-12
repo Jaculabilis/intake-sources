@@ -18,6 +18,7 @@
     packages.${system} = {
       intake-rss = pythonPackage "intake-rss" ./intake-rss [ pypkgs.feedparser ];
       intake-reddit = pythonPackage "intake-reddit" ./intake-reddit [];
+      intake-hackernews = pythonPackage "intake-hackernews" ./intake-hackernews [];
     };
 
     devShells.${system} = {

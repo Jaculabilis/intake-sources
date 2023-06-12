@@ -27,3 +27,12 @@ Supported `env`:
 - `MIN_SCORE`: Skip posts with scores below this number.
 - `TAGS`: Comma-separated list of tags to add to all items.
 - `AUTHOR_BLOCKLIST`: Comma-separated list of usernames. Posts by these users will be skipped.
+
+## intake-hackernews
+
+A feed source that returns stories from [Hacker News](https://news.ycombinator.com/).
+
+Supported `env`:
+- `FETCH_COUNT`: Number of posts to fetch from the front page. Default 30.
+- `REQUEST_RETRY`: Attempt count for fetching posts. Retries are done with exponential backoff.
+- `MIN_SCORE`: Skip stories with scores below this number.

@@ -1,0 +1,9 @@
+[project]
+name = "intake-hackernews"
+version = "0.1.0"
+
+[project.scripts]
+intake-hackernews = "intake_hackernews.core:main"
+
+[tool.setuptools]
+packages = ["intake_hackernews"]
