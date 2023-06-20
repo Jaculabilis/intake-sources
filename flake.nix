@@ -16,6 +16,14 @@
     };
   in {
     packages.${system} = {
+      default = pkgs.symlinkJoin {
+        name = "intake-sources";
+        paths = [
+          self.packages.${system}.intake-rss
+          self.packages.${system}.intake-reddit
+          self.packages.${system}.intake-hackernews
+        ];
+      };
       intake-rss = pythonPackage "intake-rss" ./intake-rss [ pypkgs.feedparser ];
       intake-reddit = pythonPackage "intake-reddit" ./intake-reddit [];
       intake-hackernews = pythonPackage "intake-hackernews" ./intake-hackernews [];
