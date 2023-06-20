@@ -2,6 +2,8 @@
 
 This repo contains programs that act as `intake` feed sources.
 
+The provided NixOS module adds the default overlay to `nixpkgs`, providing each feed source program individually as well as the `intakeSources` package that provides all of them together.
+
 ## intake-rss
 
 A feed source that wraps an RSS or Atom feed.
