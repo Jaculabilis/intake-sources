@@ -29,6 +29,7 @@ Supported `env`:
 - `MIN_SCORE`: Skip posts with scores below this number.
 - `TAGS`: Comma-separated list of tags to add to all items.
 - `AUTHOR_BLOCKLIST`: Comma-separated list of usernames. Posts by these users will be skipped.
+- `NO_VIDEO`: Set to a truthy value to filter out v.redd.it links.
 
 ## intake-hackernews
 

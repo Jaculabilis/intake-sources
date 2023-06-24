@@ -81,6 +81,7 @@ def main():
     min_score = int(os.environ.get("MIN_SCORE", 0))
     tags = [tag for tag in os.environ.get("TAGS", "").split(",") if tag]
     author_blocklist = [author for author in os.environ.get("AUTHOR_BLOCKLIST", "").split(",") if author]
+    no_video = os.environ.get("NO_VIDEO", False)
     stderr("filter nsfw =", bool(filter_nsfw))
     stderr("tag nsfw =", bool(tag_nsfw))
     stderr("filter spoiler =", bool(filter_spoiler))
@@ -88,6 +89,7 @@ def main():
     stderr("min score =", min_score)
     stderr("tags =", ", ".join(tags))
     stderr("author blocklist =", ", ".join(author_blocklist))
+    stderr("no video =", bool(no_video))
 
     for post in info["data"]["children"]:
         post_data = post["data"]
@@ -122,6 +124,11 @@ def main():
         post_author = post_data.get("author")
         if post_author in author_blocklist:
             continue
+
+        # v.redd.it filter
+        if post_url := post_data.get("url"):
+            if "v.redd" in post_url and no_video:
+                continue
 
         # Title
         if post_title := post_data.get("title"):
