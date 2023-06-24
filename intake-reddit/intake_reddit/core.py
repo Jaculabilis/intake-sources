@@ -141,7 +141,7 @@ def main():
         # Body
         parts = []
         if not post_data.get("is_self"):
-            parts.append(f'<i>link:</i> <a href="{post_data.get("url", "")}>{post_data.get("url", "(no url)")}')
+            parts.append(f'<i>link:</i> <a href="{post_data.get("url", "")}">{post_data.get("url", "(no url)")}</a>')
         if preview := post_data.get("preview"):
             try:
                 previews = preview["images"][0]["resolutions"]
