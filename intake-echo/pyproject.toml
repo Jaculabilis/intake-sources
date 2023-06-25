@@ -1,0 +1,10 @@
+[project]
+name = "intake-echo"
+version = "0.1.0"
+
+[project.scripts]
+intake-echo = "intake_echo.core:main"
+
+[tool.setuptools]
+packages = ["intake_echo"]
+

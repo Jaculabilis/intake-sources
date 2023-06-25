@@ -39,3 +39,12 @@ Supported `env`:
 - `FETCH_COUNT`: Number of posts to fetch from the front page. Default 30.
 - `REQUEST_RETRY`: Attempt count for fetching posts. Retries are done with exponential backoff.
 - `MIN_SCORE`: Skip stories with scores below this number.
+
+## intake-echo
+
+A feed source that echoes a message. This is useful with `cron` support to create recurring reminders.
+
+Supported `env`:
+- `TITLE`: The title of the item.
+- `BODY`: The body of the item.
+- `UNIQUE`: If set to a truthy value, the item id will be the hash of the title, so the same item will be generated until the message is changed.
