@@ -57,13 +57,16 @@ def main():
         if story_time := story.get("time"):
             item["time"] = int(story_time)
 
+        item["body"] = f'<p><a href="https://news.ycombinator.com/item?id={story["id"]}">Link to comments</a></p>'
         if story_text := story.get("text"):
-            item["body"] = story_text
+            item["body"] = story_text + item["body"]
 
         if story_url := story.get("url"):
             item["link"] = story_url
 
         if story_title := story.get("title"):
             item["title"] = story_title
+
+        item["ttl"] = 60 * 60 * 72  # 72 hours
 
         print(json.dumps(item))
