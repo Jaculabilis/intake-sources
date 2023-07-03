@@ -48,3 +48,20 @@ Supported `env`:
 - `TITLE`: The title of the item.
 - `BODY`: The body of the item.
 - `UNIQUE`: If set to a truthy value, the item id will be the hash of the title, so the same item will be generated until the message is changed.
+
+## intake-praw
+
+Like `intake-reddit`, but uses [PRAW](https://praw.readthedocs.io/en/stable/) to access Reddit instead of just hitting the public JSON API directly.
+
+Supported `env`:
+- `CLIENT_ID`: Required. `client_id` for PRAW.
+- `CLIENT_SECRET`: Required. `client_secret` for PRAW.
+- `USER_AGENT`: User agent for PRAW. By default, `nixos:intake_praw:X.Y.Z` with the current version number.
+- `SUBREDDIT_NAME`: Required. The subreddit name with no `r/` prefix.
+- `SUBREDDIT_PAGE`: The listing page to fetch posts from. Defaults to `hot`. Listings that support multiple time ranges can specify as e.g. `top_week`.
+- `POST_LIMIT`: The number of posts to fetch. Default `25`.
+- `FILTER_NSFW`: By default, NSFW posts are included. Set to a truthy value to skip them.
+- `FILTER_SPOILER`: As `FILTER_NSFW` for posts marked as spoilers.
+- `MIN_SCORE`: Skip posts with scores below this number.
+- `TAGS`: Comma-separated list of tags to add to all items.
+- `NO_VIDEO`: Set to a truthy value to filter out `v.redd.it` links.

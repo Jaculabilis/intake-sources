@@ -1,0 +1,10 @@
+[project]
+name = "intake-praw"
+version = "1.0.0"
+
+[project.scripts]
+intake-praw = "intake_praw.core:main"
+
+[tool.setuptools]
+packages = ["intake_praw"]
+
