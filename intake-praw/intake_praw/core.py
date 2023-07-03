@@ -100,7 +100,7 @@ def main():
         if "v.redd" in post.url:
             if no_video:
                 continue
-            post["title"] = "[V] " + post["title"]
+            item["title"] = "[V] " + item["title"]
 
         # Special handling for NSFW
         if post.over_18:
